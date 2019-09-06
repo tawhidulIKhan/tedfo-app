@@ -6,6 +6,9 @@
             @include('partials.sidebar')
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                @include('partials.breadcrumb')
+
                 <div class="bg-white p-5 shadow-sm">
                     <div class="d-flex justify-content-between mb-4 align-items-center">
                         <h4 class="mb-3">All Posts</h4>
