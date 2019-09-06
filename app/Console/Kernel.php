@@ -27,21 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
+        $schedule->call(function () {});
 
-            $posts = Post::where('status', 'pending')->get();
-            foreach ($posts as $post){
-                $today = Carbon::now()->toDateString();
-                if($post->schedule_date->toDateString() == $today){
-                    $post->update([
-                        'status' => 'published'
-                    ]);
-                }else{
-                    continue;
-                }
-            }
-
-        })->everyMinute();
     }
 
     /**

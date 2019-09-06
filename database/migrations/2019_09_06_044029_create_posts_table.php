@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->text('body')->nullable();
             $table->string('photo_path');
             $table->date('schedule_date')->nullable();
-            $table->enum('status', ['published', 'pending'])->default('pending');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
