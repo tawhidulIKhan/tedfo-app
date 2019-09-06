@@ -7,7 +7,9 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-                @include('partials.breadcrumb')
+                @include('partials.breadcrumb', [
+                    'label' => 'Post Index'
+                ])
 
                 <div class="bg-white p-5 shadow-sm">
                     @include('partials.notification')

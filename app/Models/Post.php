@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'body', 'photo_path'];
+    protected $fillable = ['title', 'body', 'photo_path', 'user_id', 'schedule_date', 'status'];
+
+    protected $dates = ['schedule_date'];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
 }

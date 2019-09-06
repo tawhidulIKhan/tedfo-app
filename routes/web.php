@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomePageController@index')->name('homepage.index');
+Route::get('/details/{post}', 'HomePageController@show')->name('post.details');
 
 Auth::routes();
 
@@ -22,10 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => '/posts/'], function(){
     Route::get('/', 'PostController@index')->name('post.index');
     Route::get('/create', 'PostController@create')->name('post.create');
+    Route::get('/show/{post}', 'PostController@show')->name('post.show');
     Route::post('/store', 'PostController@store')->name('post.store');
     Route::get('/edit/{post}', 'PostController@edit')->name('post.edit');
     Route::post('/update/{post}', 'PostController@update')->name('post.update');
-    Route::delete('/delete/{post}', 'PostController@delete')->name('post.delete');
+    Route::delete('/delete/{post}', 'PostController@destroy')->name('post.delete');
 });
 
 

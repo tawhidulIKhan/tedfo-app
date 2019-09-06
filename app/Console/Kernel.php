@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +27,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+
+            $posts = Post::where('status', 'pending')->get();
+            foreach ($posts as $post){
+                $today = Carbon::now()->toDateString();
+                if($post->schedule_date->toDateString() == $today){
+                    $post->update([
+                        'status' => 'published'
+                    ]);
+                }else{
+                    continue;
+                }
+            }
+
+        })->everyMinute();
     }
 
     /**
