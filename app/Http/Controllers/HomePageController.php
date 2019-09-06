@@ -11,7 +11,7 @@ class HomePageController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::where('status', 'published')->paginate(10);
+        $posts = Post::whereDate('schedule_date', '<=', Carbon::today())->paginate(10);
         return view('welcome', compact('posts'));
     }
 

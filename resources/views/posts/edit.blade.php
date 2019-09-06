@@ -41,6 +41,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <img src="{{ asset('storage/'.$post->photo_path) }}" alt="" class="img-fluid" width="200" height="200">
                             <label>Upload featured image</label>
                             <input type="file" name="post_featured_image" id="post_featured_image">
 
